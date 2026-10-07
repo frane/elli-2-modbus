@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "elli-2-modbus"
+version = "0.1.0"
+description = "Local Modbus TCP control of Elli Charger 2 wallboxes (VW ID. Charger 2, Škoda, CUPRA)"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Frane Bandov" }]
+requires-python = ">=3.10"
+dependencies = []
+keywords = ["elli", "wallbox", "ev-charger", "modbus", "home-assistant", "volkswagen"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Framework :: AsyncIO",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Topic :: Home Automation",
+  "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://github.com/frane/elli-2-modbus"
+Issues = "https://github.com/frane/elli-2-modbus/issues"
+
+[project.scripts]
+elli-2-modbus = "elli2modbus.cli:main"
+
+[project.optional-dependencies]
+test = ["pytest>=8", "pytest-asyncio>=0.23"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/elli2modbus"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
